@@ -1,0 +1,12 @@
+Aurelia Resort — Infinity Pool scene (hotspot model swap target)
+Title: Above ground swimming pool
+Author: Poly by Google
+Source page: https://poly.pizza/m/2R5gjVusWRN
+Direct file: https://static.poly.pizza/3c0970b5-c24c-4b7a-b074-fef196fb8213.glb
+Downloaded: 2026-09-05 (via scripts/fetch-resort-model.mjs --out pool.glb)
+License: Creative Commons Attribution (CC-BY) as listed on Poly Pizza.
+Required: credit the author (this file + in-app credits) and link the source.
+Stats at import: 2.0 MB (single embedded texture — candidate for
+gltf-transform texture compression later), 1 mesh, 1,424 tris.
+Shown at the SAME world anchor when the Pool hotspot is tapped —
+the anchor is never reset on scene swap.

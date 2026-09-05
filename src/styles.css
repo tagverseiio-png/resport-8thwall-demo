@@ -1,0 +1,255 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Aurelia Resort WebAR demo — premium resort design system.
+ * All colours are oklch tokens. Components must never hardcode colours.
+ */
+
+@theme inline {
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 10px);
+  --radius-3xl: calc(var(--radius) + 18px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-glass: var(--glass);
+  --color-glass-border: var(--glass-border);
+  --color-overlay: var(--overlay);
+
+  --shadow-glass: 0 18px 50px -20px oklch(0 0 0 / 0.65);
+  --shadow-sheet: 0 -22px 60px -24px oklch(0 0 0 / 0.7);
+  --shadow-glow: 0 0 28px -4px color-mix(in oklab, var(--primary) 55%, transparent);
+}
+
+:root {
+  --radius: 1rem;
+
+  --background: oklch(0.16 0.012 70);
+  --foreground: oklch(0.97 0.006 85);
+  --card: oklch(0.21 0.014 72);
+  --card-foreground: oklch(0.97 0.006 85);
+  --popover: oklch(0.19 0.013 72);
+  --popover-foreground: oklch(0.97 0.006 85);
+
+  --primary: oklch(0.79 0.115 78);
+  --primary-foreground: oklch(0.18 0.02 70);
+  --secondary: oklch(0.27 0.014 74);
+  --secondary-foreground: oklch(0.96 0.006 85);
+  --muted: oklch(0.25 0.012 74);
+  --muted-foreground: oklch(0.74 0.014 80);
+  --accent: oklch(0.6 0.055 190);
+  --accent-foreground: oklch(0.15 0.014 200);
+
+  --destructive: oklch(0.62 0.19 28);
+  --destructive-foreground: oklch(0.98 0.005 85);
+  --success: oklch(0.74 0.13 155);
+  --success-foreground: oklch(0.17 0.02 155);
+
+  --border: oklch(0.98 0.005 85 / 0.14);
+  --input: oklch(0.98 0.005 85 / 0.18);
+  --ring: oklch(0.79 0.115 78);
+
+  --glass: oklch(0.18 0.012 72 / 0.62);
+  --glass-border: oklch(0.98 0.005 85 / 0.16);
+  --overlay: oklch(0.12 0.012 70 / 0.82);
+
+  --gradient-cinematic: linear-gradient(
+    180deg,
+    oklch(0.12 0.012 70 / 0.05) 0%,
+    oklch(0.12 0.012 70 / 0.65) 55%,
+    oklch(0.11 0.012 70 / 0.96) 100%
+  );
+  --gradient-gold: linear-gradient(
+    135deg,
+    oklch(0.86 0.1 88) 0%,
+    oklch(0.79 0.115 78) 48%,
+    oklch(0.68 0.1 62) 100%
+  );
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    height: 100%;
+    overscroll-behavior: none;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  h1,
+  h2,
+  .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility glass-panel {
+  background-color: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow-glass);
+}
+
+@utility gold-text {
+  background: var(--gradient-gold);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility gold-surface {
+  background: var(--gradient-gold);
+  color: var(--primary-foreground);
+}
+
+@utility cinematic-veil {
+  background: var(--gradient-cinematic);
+}
+
+@utility safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+@utility safe-top {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
+}
+
+@keyframes ar-scan {
+  0% {
+    transform: translateY(-52%) scaleX(0.7);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(52%) scaleX(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes ar-tilt {
+  0%,
+  100% {
+    transform: rotate(-14deg) translateY(0);
+  }
+  50% {
+    transform: rotate(16deg) translateY(6px);
+  }
+}
+
+@keyframes ar-pulse-ring {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes ar-sweep {
+  0%,
+  100% {
+    transform: translateX(-52px) rotate(-10deg);
+  }
+  50% {
+    transform: translateX(52px) rotate(10deg);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-scan-line {
+  animation: ar-scan 2.4s ease-in-out infinite;
+}
+
+@utility animate-tilt-phone {
+  animation: ar-tilt 2.6s ease-in-out infinite;
+}
+
+@utility animate-pulse-ring {
+  animation: ar-pulse-ring 1.8s ease-out infinite;
+}
+
+@utility animate-sweep-phone {
+  animation: ar-sweep 3.2s ease-in-out infinite;
+}
+
+@utility animate-rise-in {
+  animation: rise-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ar-hotspot-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* DOM hotspot dots (XR8 view). Plain class — not a utility — so the
+   reduced-motion guard below always applies. */
+@media (prefers-reduced-motion: no-preference) {
+  .hotspot-pulse {
+    animation: ar-hotspot-pulse 1.5s ease-in-out infinite;
+    transform-origin: center;
+  }
+}

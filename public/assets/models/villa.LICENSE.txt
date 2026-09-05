@@ -1,0 +1,12 @@
+Aurelia Resort — Beach Villa scene (hotspot model swap target)
+Title: Small House
+Author: Jarlan Perez
+Source page: https://poly.pizza/m/053kskrV4U_
+Direct file: https://static.poly.pizza/f5da7568-4b84-48a3-886f-9f432c576487.glb
+Downloaded: 2026-09-05 (via scripts/fetch-resort-model.mjs --out villa.glb)
+License: Creative Commons Attribution (CC-BY) as listed on Poly Pizza.
+Required: credit the author (this file + in-app credits) and link the source.
+Stats at import: 217 KB, 1 mesh, 3,800 tris, 9 flat materials,
+no textures, no extensions.
+Shown at the SAME world anchor when a Rooms/Villa hotspot is tapped —
+the anchor is never reset on scene swap.

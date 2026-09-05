@@ -1,0 +1,4 @@
+# AR Quick Look only accepts a .usdz served with this exact media type.
+/assets/models/*.usdz
+  Content-Type: model/vnd.usd+zip
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,0 +1,26 @@
+THIRD-PARTY NOTICES — RealSpace Explorer
+==========================================
+
+1. 8th Wall XR Engine (Distributed Engine Binary, with SLAM)
+   Copyright © 2026 Niantic Spatial, Inc. All rights reserved.
+   Loaded at runtime, unmodified, from the official distribution:
+     https://cdn.jsdelivr.net/npm/@8thwall/engine-binary@1/dist/xr.js
+   License (binary-only, permits commercial + noncommercial use):
+     https://github.com/8thwall/engine/blob/main/LICENSE
+   Attribution guidelines:
+     https://8thwall.org/docs/open-source
+
+2. SeaSide Villa base model (public/assets/models/resort.glb)
+   Author: Yogoshimo 2.0 — https://poly.pizza/m/03rq-iA54uU
+   License: Creative Commons Attribution (CC-BY), as listed on Poly Pizza.
+   Full per-asset record: public/assets/models/resort.LICENSE.txt
+
+3. Small House swap model (public/assets/models/villa.glb)
+   Author: Jarlan Perez — https://poly.pizza/m/053kskrV4U_
+   License: Creative Commons Attribution (CC-BY), as listed on Poly Pizza.
+   Full per-asset record: public/assets/models/villa.LICENSE.txt
+
+4. Above ground swimming pool swap model (public/assets/models/pool.glb)
+   Author: Poly by Google — https://poly.pizza/m/2R5gjVusWRN
+   License: Creative Commons Attribution (CC-BY), as listed on Poly Pizza.
+   Full per-asset record: public/assets/models/pool.LICENSE.txt

@@ -1,0 +1,11 @@
+Aurelia Resort base model
+Title: SeaSide Villa
+Author: Yogoshimo 2.0
+Source page: https://poly.pizza/m/03rq-iA54uU
+Direct file: https://static.poly.pizza/5a127250-a11c-44c2-8ca9-ad0434b45ed4.glb
+Downloaded: 2026-09-05 (via scripts/fetch-resort-model.mjs)
+License: Creative Commons Attribution (CC-BY) as listed on Poly Pizza.
+Required: credit the author (this file + in-app credits) and link the source.
+Stats at import: 345 KB, 80 meshes, 3,605 tris, 10 vertex-color materials,
+no textures, no extensions — loads without Draco/KTX2 transcoders.
+ webxr_ar_hittest-style placement: model auto-scales to realWorldSize (1.2 m).
