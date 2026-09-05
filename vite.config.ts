@@ -1,4 +1,4 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
+// The shared vite-tanstack-config preset already includes the following — do NOT add them manually
 // or the app will break with duplicate plugins:
 //   - TanStack devtools (dev-only, first), tanstackStart, viteReact, tailwindcss, tsConfigPaths,
 //     nitro (build-only using cloudflare as a default target), VITE_* env injection, @ path alias,
@@ -47,7 +47,7 @@ export default defineConfig({
     // needs the bytes served verbatim.
     assetsInclude: ["**/*.usdz"],
     server: {
-      // Allow all hosts (ngrok, lovable preview, local network, etc.)
+      // Allow all hosts (ngrok, remote preview, local network, etc.)
       // `true` disables the host allowlist check.
       allowedHosts: true,
       host: true,
