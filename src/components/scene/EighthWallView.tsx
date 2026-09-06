@@ -734,17 +734,34 @@ export function EighthWallView(props: EighthWallViewProps) {
       const s = projectRef.current.realWorldSize;
       const width = s * 0.9;
       const height = width * 0.5625;
-      videoHandle = createARVideo(src, { loop: true, muted: !audible });
+      videoHandle = createARVideo(src, {
+        loop: true,
+        muted: !audible,
+        // Missing/unplayable file: tear the holder down at once. An
+        // unloaded VideoTexture renders solid black — the floating slab.
+        onError: () => {
+          const ctx = ctxRef.current;
+          if (videoHandle) {
+            videoHandle.dispose();
+            videoHandle = null;
+            if (ctx) ctx.videoHandle = null;
+          }
+          ctx?.userGroup.children
+            .filter((c) => c.userData["isVideoPlane"])
+            .forEach((c) => ctx.userGroup.remove(c));
+        },
+      });
       ctx.videoHandle = videoHandle;
       const holder = new THREE.Group();
       holder.userData["isVideoPlane"] = true;
       holder.position.set(0, 0.34, -0.32);
+      // FrontSide only: from behind the panel vanishes instead of floating
+      // as a dark billboard next to the model.
       const screen = new THREE.Mesh(
         new THREE.PlaneGeometry(width, height),
         new THREE.MeshBasicMaterial({
           map: videoHandle.texture,
           toneMapped: false,
-          side: THREE.DoubleSide,
         }),
       );
       const frame = new THREE.Mesh(
@@ -753,7 +770,6 @@ export function EighthWallView(props: EighthWallViewProps) {
           color: "#e5bd72",
           transparent: true,
           opacity: 0.5,
-          side: THREE.DoubleSide,
         }),
       );
       frame.position.z = -0.004;

@@ -156,15 +156,12 @@ export const aureliaResort: ProjectConfig = {
       priceFrom: "From $540 / night",
     },
   ],
+  // Only markers backed by a shipped GLB are listed here. Every hotspot
+  // without a `sceneId` used to point at island locations that don't exist
+  // in resort.glb (spa, restaurants, beach club…) — floating fake markings,
+  // so they were removed. The three below are real: two open the villa
+  // model, one opens the pool model.
   hotspots: [
-    {
-      id: "beach-club",
-      label: "Beach Club",
-      title: "Beach Club",
-      description: "Daybeds, sunset DJs and barefoot lunches on the sand.",
-      type: "beach",
-      position: { x: -0.42, y: 0.06, z: 0.3 },
-    },
     {
       id: "water-villas",
       label: "Water Villas",
@@ -173,30 +170,6 @@ export const aureliaResort: ProjectConfig = {
       type: "villa",
       sceneId: "villa",
       position: { x: -0.2, y: 0.1, z: 0.42 },
-    },
-    {
-      id: "main-lobby",
-      label: "Main Lobby",
-      title: "Main Lobby",
-      description: "Open-air arrival pavilion — start your tour here.",
-      type: "room",
-      position: { x: -0.05, y: 0.16, z: 0.05 },
-    },
-    {
-      id: "spa",
-      label: "Spa & Wellness",
-      title: "Spa & Wellness",
-      description: "Overwater treatment pavilions and yoga shala.",
-      type: "spa",
-      position: { x: -0.02, y: 0.2, z: -0.34 },
-    },
-    {
-      id: "restaurants",
-      label: "Restaurants",
-      title: "Restaurants & Bars",
-      description: "Five venues from overwater fine dining to beach grill.",
-      type: "restaurant",
-      position: { x: 0.3, y: 0.14, z: -0.18 },
     },
     {
       id: "villa-rooms",
@@ -215,14 +188,6 @@ export const aureliaResort: ProjectConfig = {
       type: "pool",
       sceneId: "pool",
       position: { x: 0.05, y: 0.08, z: 0.18 },
-    },
-    {
-      id: "private-beach",
-      label: "Private Beach",
-      title: "Private Beach",
-      description: "800 m of white sand with full beach service.",
-      type: "beach",
-      position: { x: 0.28, y: 0.04, z: 0.38 },
     },
   ],
   contact: {

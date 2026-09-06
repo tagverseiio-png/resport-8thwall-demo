@@ -3,6 +3,7 @@ import { useAR } from "@/hooks/useAR";
 import { useModel } from "@/hooks/useModel";
 import { useProject } from "@/hooks/useProject";
 import { trackEvent } from "@/ar/analytics";
+import { videoExists } from "@/ar/ARVideo";
 import { devicePerformanceTier } from "@/utils/device";
 import { notifyUserInteraction } from "@/ar/motion";
 import type { HotspotData } from "@/models/Hotspot";
@@ -44,6 +45,9 @@ export function ARViewer({ projectSlug }: { projectSlug?: string }) {
   const [hotspot, setHotspot] = useState<HotspotData | null>(null);
   const [soundOn, setSoundOn] = useState(false);
   const [videoVisible, setVideoVisible] = useState(false);
+  /** False once verified missing — hides the Play button so a dead panel
+      can never be summoned (it renders as a black slab). */
+  const [videoAvailable, setVideoAvailable] = useState(true);
   const [desktopOverride, setDesktopOverride] = useState(false);
   const [justPlaced, setJustPlaced] = useState(false);
   const [previewResetKey, setPreviewResetKey] = useState(0);
@@ -138,6 +142,26 @@ export function ARViewer({ projectSlug }: { projectSlug?: string }) {
     if (modelStatus === "ready" || modelStatus === "placeholder") ar.modelReady();
     if (modelStatus === "error") ar.fail("MODEL_LOAD_FAILED");
   }, [ar, flow, modelStatus]);
+
+  /* Verify the film file exists (cheap HEAD). A 404 video mounts a black
+     panel — never offer the Play button for one. */
+  useEffect(() => {
+    const url = project.arVideoUrl;
+    if (!url) {
+      setVideoAvailable(false);
+      return;
+    }
+    let cancelled = false;
+    setVideoAvailable(true);
+    void videoExists(url).then((ok) => {
+      if (cancelled || ok) return;
+      setVideoAvailable(false);
+      setVideoVisible(false);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [project.arVideoUrl]);
 
   /* Ambient sound. */
   useEffect(() => {
@@ -395,7 +419,7 @@ export function ARViewer({ projectSlug }: { projectSlug?: string }) {
             activePanel={panel}
             soundOn={soundOn}
             videoPlaying={videoVisible}
-            hasVideo={Boolean(project.arVideoUrl)}
+            hasVideo={Boolean(project.arVideoUrl) && videoAvailable}
             resetLabel={flow === "PREVIEW" ? "Recentre" : "Exterior"}
             onOpenPanel={openPanel}
             onResetView={resetView}
